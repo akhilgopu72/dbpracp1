@@ -8,7 +8,10 @@ import cs4321.project1.tree.MultiplicationTreeNode;
 import cs4321.project1.tree.UnaryMinusTreeNode;
 import java.util.*;
 /**
- * Provide a comment about what your class does and the overall logic
+ * Used postorder method to go in order: left, right, root
+ * This accomplishes the task of computing the left side of the tree and then the right
+ * and using those two values to compute the root operation. Then this gets saved to our 
+ * stack, and will remain there for this instance of EvaluateTreeVisitor
  * 
  * @author Rong Tan (rt389) and Akhil Gopu (akg68)
  */
@@ -18,11 +21,9 @@ public class EvaluateTreeVisitor implements TreeVisitor {
 	
 	public EvaluateTreeVisitor() {
 		aStack = new Stack();
-		// TODO fill me in
 	}
 
 	public double getResult() {
-		// TODO fill me in
 		return aStack.peek(); // so that skeleton code compiles
 	}
 
