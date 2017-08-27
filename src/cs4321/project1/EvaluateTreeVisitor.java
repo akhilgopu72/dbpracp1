@@ -10,7 +10,7 @@ import cs4321.project1.tree.UnaryMinusTreeNode;
 /**
  * Provide a comment about what your class does and the overall logic
  * 
- * @author Rong Tan (rt389)
+ * @authorAkhil Gopu (akg68) and Rong Tan (rt389)
  */
 
 public class EvaluateTreeVisitor implements TreeVisitor {

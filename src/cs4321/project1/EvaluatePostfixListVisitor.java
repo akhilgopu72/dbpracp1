@@ -10,7 +10,7 @@ import cs4321.project1.list.UnaryMinusListNode;
 /**
  * Provide a comment about what your class does and the overall logic
  * 
- * @author Your names and netids go here
+ * @author Akhil Gopu (akg68) and Rong Tan (rt389)
  */
 public class EvaluatePostfixListVisitor implements ListVisitor {
 
