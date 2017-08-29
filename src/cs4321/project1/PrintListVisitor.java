@@ -10,45 +10,70 @@ import cs4321.project1.list.*;
 
 public class PrintListVisitor implements ListVisitor {
 
+	private String result; // running string representation
+
 	public PrintListVisitor() {
-		// TODO fill me in
+		result = "";
 	}
 
 	public String getResult() {
-		// TODO fill me in
-		return null;
+		return result;
 	}
 
 	@Override
 	public void visit(NumberListNode node) {
-		// TODO fill me in
+		result += node.getData();
+		if (node.getNext() != null) {
+			result += " ";
+			node.getNext().accept(this);
+		}
 	}
 
 	@Override
 	public void visit(AdditionListNode node) {
-		// TODO fill me in
+		result += "+";
+		if (node.getNext() != null) {
+			result += " ";
+			node.getNext().accept(this);
+		}
 	}
 
 	@Override
 	public void visit(SubtractionListNode node) {
-		// TODO fill me in
+		result += "-";
+		if (node.getNext() != null) {
+			result += " ";
+			node.getNext().accept(this);
+		}
 	}
 
 	@Override
 	public void visit(MultiplicationListNode node) {
-		// TODO fill me in
+		result += "*";
+		if (node.getNext() != null) {
+			result += " ";
+			node.getNext().accept(this);
+		}
 
 	}
 
 	@Override
 	public void visit(DivisionListNode node) {
-		// TODO fill me in
+		result += "/";
+		if (node.getNext() != null) {
+			result += " ";
+			node.getNext().accept(this);
+		}
 
 	}
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
-		// TODO fill me in
+		result += "~";
+		if (node.getNext() != null) {
+			result += " ";
+			node.getNext().accept(this);
+		}
 
 	}
 
