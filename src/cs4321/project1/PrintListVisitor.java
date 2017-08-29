@@ -16,10 +16,22 @@ public class PrintListVisitor implements ListVisitor {
 		result = "";
 	}
 
+	/**
+	 * Method to get the finished string representation when visitor is done
+	 * 
+	 * @return string representation of the visited list
+	 */
 	public String getResult() {
 		return result;
 	}
 
+	/**
+	 * Visit method for number node; just concatenates the numeric value to the
+	 * running string
+	 * 
+	 * @param node
+	 *            the node to be visited
+	 */
 	@Override
 	public void visit(NumberListNode node) {
 		result += node.getData();
@@ -29,6 +41,13 @@ public class PrintListVisitor implements ListVisitor {
 		}
 	}
 
+	/**
+	 * Visit method for addition node by adding + to the original result string
+	 * and proceed to the next node in the list
+	 * 
+	 * @param node
+	 *            the node to be visited
+	 */
 	@Override
 	public void visit(AdditionListNode node) {
 		result += "+";
@@ -37,7 +56,14 @@ public class PrintListVisitor implements ListVisitor {
 			node.getNext().accept(this);
 		}
 	}
-
+	
+	/**
+	 * Visit method for addition node by adding - to the original result string
+	 * and proceed to the next node in the list
+	 * 
+	 * @param node
+	 *            the node to be visited
+	 */
 	@Override
 	public void visit(SubtractionListNode node) {
 		result += "-";
@@ -47,6 +73,13 @@ public class PrintListVisitor implements ListVisitor {
 		}
 	}
 
+	/**
+	 * Visit method for addition node by adding * to the original result string
+	 * and proceed to the next node in the list
+	 * 
+	 * @param node
+	 *            the node to be visited
+	 */
 	@Override
 	public void visit(MultiplicationListNode node) {
 		result += "*";
@@ -57,6 +90,13 @@ public class PrintListVisitor implements ListVisitor {
 
 	}
 
+	/**
+	 * Visit method for addition node by adding / to the original result string
+	 * and proceed to the next node in the list
+	 * 
+	 * @param node
+	 *            the node to be visited
+	 */
 	@Override
 	public void visit(DivisionListNode node) {
 		result += "/";
@@ -66,7 +106,14 @@ public class PrintListVisitor implements ListVisitor {
 		}
 
 	}
-
+	
+	/**
+	 * Visit method for addition node by adding ~ to the original result string
+	 * and proceed to the next node in the list
+	 * 
+	 * @param node
+	 *            the node to be visited
+	 */
 	@Override
 	public void visit(UnaryMinusListNode node) {
 		result += "~";
