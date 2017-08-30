@@ -46,7 +46,7 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode factor() {
-		TreeNode result = term();
+		TreeNode result;
 		if (tokens[currentToken].equals("(")) {
 			currentToken++;
 			result = expression();
@@ -67,14 +67,14 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode term() {
-		TreeNode result = term();
+		TreeNode result = factor();
 		while (currentToken < tokens.length) {
 			if (tokens[currentToken].equals("*")) {
 				currentToken++;
-				result = new MultiplicationTreeNode(result, term());
+				result = new MultiplicationTreeNode(result, factor());
 			} else if (tokens[currentToken].equals("/")) {
 				currentToken++;
-				result = new DivisionTreeNode(result, term());
+				result = new DivisionTreeNode(result, factor());
 			}
 		}
 		return result;
