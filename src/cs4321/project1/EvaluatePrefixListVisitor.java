@@ -75,7 +75,8 @@ public class EvaluatePrefixListVisitor implements ListVisitor {
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
-		operands.push(((NumberListNode)node.getNext()).getData() * -1.0);
 		node.getNext().accept(this);
+		operands.push(operands.pop() * -1.0);
+		
 	}
 }
