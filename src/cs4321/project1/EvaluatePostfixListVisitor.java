@@ -47,7 +47,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
-		aStack.push(tmp1-tmp2);
+		aStack.push(tmp2-tmp1);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
-		aStack.push(tmp1/tmp2);
+		aStack.push(tmp2/tmp1);
 	}
 
 	@Override
