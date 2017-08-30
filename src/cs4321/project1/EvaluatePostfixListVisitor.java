@@ -32,6 +32,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 
 	@Override
 	public void visit(AdditionListNode node) {
+		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp1+tmp2);
@@ -39,6 +40,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 
 	@Override
 	public void visit(SubtractionListNode node) {
+		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp1-tmp2);
@@ -46,6 +48,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 
 	@Override
 	public void visit(MultiplicationListNode node) {
+		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp1*tmp2);
@@ -53,6 +56,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 
 	@Override
 	public void visit(DivisionListNode node) {
+		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp1/tmp2);
@@ -60,6 +64,7 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
+		node.getNext().accept(this);
 		double tmp1 = aStack.pop();
 		aStack.push(tmp1 * -1.0);
 	}
