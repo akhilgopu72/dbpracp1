@@ -1,5 +1,6 @@
 package cs4321.project1;
 
+import java.util.*;
 import cs4321.project1.list.DivisionListNode;
 import cs4321.project1.list.SubtractionListNode;
 import cs4321.project1.list.NumberListNode;
@@ -13,44 +14,54 @@ import cs4321.project1.list.UnaryMinusListNode;
  * @author Akhil Gopu (akg68) and Rong Tan (rt389)
  */
 public class EvaluatePostfixListVisitor implements ListVisitor {
+	
+	private Stack<Double> aStack;
 
 	public EvaluatePostfixListVisitor() {
-		// TODO fill me in
+		aStack = new Stack<Double>();
 	}
 
 	public double getResult() {
-		// TODO fill me in
-		return 42; // so that skeleton code compiles
+		return aStack.peek();
 	}
 
 	@Override
 	public void visit(NumberListNode node) {
-		// TODO fill me in
+		aStack.push(node.getData());
 	}
 
 	@Override
 	public void visit(AdditionListNode node) {
-		// TODO fill me in
+		double tmp1 = aStack.pop();
+		double tmp2 = aStack.pop();
+		aStack.push(tmp1+tmp2);
 	}
 
 	@Override
 	public void visit(SubtractionListNode node) {
-		// TODO fill me in
+		double tmp1 = aStack.pop();
+		double tmp2 = aStack.pop();
+		aStack.push(tmp1-tmp2);
 	}
 
 	@Override
 	public void visit(MultiplicationListNode node) {
-		// TODO fill me in
+		double tmp1 = aStack.pop();
+		double tmp2 = aStack.pop();
+		aStack.push(tmp1*tmp2);
 	}
 
 	@Override
 	public void visit(DivisionListNode node) {
-		// TODO fill me in
+		double tmp1 = aStack.pop();
+		double tmp2 = aStack.pop();
+		aStack.push(tmp1/tmp2);
 	}
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
-		// TODO fill me in
+		double tmp1 = aStack.pop();
+		aStack.push(tmp1 * -1.0);
 	}
 
 }
