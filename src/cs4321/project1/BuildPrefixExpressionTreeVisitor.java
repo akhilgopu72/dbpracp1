@@ -10,43 +10,61 @@ import cs4321.project1.tree.*;
  */
 public class BuildPrefixExpressionTreeVisitor implements TreeVisitor {
 
+	private ListNode node0; // the very first node
+	private ListNode nodex; // the temp node attached after the very first node
+
 	public BuildPrefixExpressionTreeVisitor() {
-		// TODO fill me in
+		node0 = new NumberListNode(0);
+		nodex = node0;
 	}
 
 	public ListNode getResult() {
-		// TODO fill me in
-		return null;
+		return node0.getNext();
 	}
 
 	@Override
 	public void visit(LeafTreeNode node) {
-		// TODO fill me in
+		nodex.setNext(new NumberListNode(node.getData()));
+		nodex = nodex.getNext();
 	}
 
 	@Override
 	public void visit(UnaryMinusTreeNode node) {
-		// TODO fill me in
+		nodex.setNext(new UnaryMinusListNode());
+		nodex = nodex.getNext();
+		node.getChild().accept(this);
 	}
 
 	@Override
 	public void visit(AdditionTreeNode node) {
-		// TODO fill me in
+		nodex.setNext(new AdditionListNode());
+		nodex = nodex.getNext();
+		node.getLeftChild().accept(this);
+		node.getRightChild().accept(this);
 	}
 
 	@Override
 	public void visit(MultiplicationTreeNode node) {
-		// TODO fill me in
+		nodex.setNext(new MultiplicationListNode());
+		nodex = nodex.getNext();
+		node.getLeftChild().accept(this);
+		node.getRightChild().accept(this);
 	}
 
 	@Override
 	public void visit(SubtractionTreeNode node) {
-		// TODO fill me in
+		nodex.setNext(new MultiplicationListNode());
+		nodex = nodex.getNext();
+		node.getLeftChild().accept(this);
+		node.getRightChild().accept(this);
 	}
 
 	@Override
 	public void visit(DivisionTreeNode node) {
-		// TODO fill me in
+		nodex.setNext(new DivisionListNode());
+		nodex = nodex.getNext();
+		node.getLeftChild().accept(this);
+		node.getRightChild().accept(this);
 	}
 
 }
