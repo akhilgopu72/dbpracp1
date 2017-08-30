@@ -1,51 +1,81 @@
 package cs4321.project1;
 
 import cs4321.project1.list.*;
+import java.util.*;
 
 /**
- * Provide a comment about what your class does and the overall logic
+ * The list will start inserting each element of itself onto its respective stack.
+ * Once two integers are found, there must be at least one operator on the operator stack.
+ * The operator is popped up and the operands are computed. Once complete, the new operand 
+ * is pushed back onto the operand stack. This keeps happening until only operand is left.
  * 
  * @author Akhil Gopu (akg68) and Rong Tan (rt389)
  */
 
 public class EvaluatePrefixListVisitor implements ListVisitor {
+	
+	Stack<Double> operands;
+	Stack<ListNode> operators;
+	int operandCount;
 
 	public EvaluatePrefixListVisitor() {
-		// TODO fill me in
+		operands = new Stack<Double>();
+		operators = new Stack<ListNode>();
 	}
 
 	public double getResult() {
-		// TODO fill me in
-		return 42; // so that skeleton code compiles
+		return operands.peek();
 	}
 
 	@Override
 	public void visit(NumberListNode node) {
-		// TODO fill me in
+		operands.push(node.getData());
+		operandCount++;
+		if (operandCount >= 2)
+		{
+			double tmp1 = operands.pop();
+			double tmp2 = operands.pop();
+			operandCount -= 1;
+			ListNode operate = operators.pop();
+			if (operate instanceof AdditionListNode)
+				operands.push(tmp1 + tmp2);
+			else if (operate instanceof SubtractionListNode)
+				operands.push(tmp2 - tmp1); //pop off stack in reverse order
+			else if (operate instanceof MultiplicationListNode)
+				operands.push(tmp1 * tmp2);
+			else if (operate instanceof DivisionListNode)
+				operands.push(tmp2 / tmp1);
+		}
+		node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(AdditionListNode node) {
-		// TODO fill me in
+		operators.push(node);
+		node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(SubtractionListNode node) {
-		// TODO fill me in
+		operators.push(node);
+		node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(MultiplicationListNode node) {
-		// TODO fill me in
+		operators.push(node);
+		node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(DivisionListNode node) {
-		// TODO fill me in
+		operators.push(node);
+		node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
-		// TODO fill me in
+		operands.push(((NumberListNode)node.getNext()).getData() * -1.0);
+		node.getNext().accept(this);
 	}
 }
