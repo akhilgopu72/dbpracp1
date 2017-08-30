@@ -35,7 +35,7 @@ public class EvaluatePrefixListVisitor implements ListVisitor {
 		{
 			double tmp1 = operands.pop();
 			double tmp2 = operands.pop();
-			operandCount -= 2;
+			operandCount -= 1;
 			ListNode operate = operators.pop();
 			if (operate instanceof AdditionListNode)
 				operands.push(tmp1 + tmp2);
