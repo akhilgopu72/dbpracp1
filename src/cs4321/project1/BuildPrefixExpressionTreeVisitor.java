@@ -87,7 +87,7 @@ public class BuildPrefixExpressionTreeVisitor implements TreeVisitor {
 	 */
 	@Override
 	public void visit(SubtractionTreeNode node) {
-		nodex.setNext(new MultiplicationListNode());
+		nodex.setNext(new SubtractionListNode());
 		nodex = nodex.getNext();
 		node.getLeftChild().accept(this);
 		node.getRightChild().accept(this);

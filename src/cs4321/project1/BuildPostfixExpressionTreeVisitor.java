@@ -88,7 +88,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	public void visit(SubtractionTreeNode node) {
 		node.getLeftChild().accept(this);
 		node.getRightChild().accept(this);
-		nodex.setNext(new MultiplicationListNode());
+		nodex.setNext(new SubtractionListNode());
 		nodex = nodex.getNext();
 	}
 
