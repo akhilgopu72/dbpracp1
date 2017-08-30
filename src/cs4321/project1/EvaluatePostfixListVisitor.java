@@ -9,7 +9,11 @@ import cs4321.project1.list.MultiplicationListNode;
 import cs4321.project1.list.UnaryMinusListNode;
 
 /**
- * Provide a comment about what your class does and the overall logic
+ * This class uses a stack to keep track of the integers being processed.
+ * As each integer gets reviewed, it gets pushed. When there are 2 integers on the queue,
+ * an operator will definitely be next because of the way postfix lists work. When that operation
+ * is complete, the new operand will get pushed back to the stack and so on until there 
+ * is only operand left.
  * 
  * @author Akhil Gopu (akg68) and Rong Tan (rt389)
  */
