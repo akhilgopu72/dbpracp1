@@ -46,9 +46,19 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode factor() {
-
-		// TODO fill me in
-		return null;
+		TreeNode result;
+		if (tokens[currentToken].equals("(")) {
+			currentToken++;
+			result = expression();
+			currentToken++;
+		} else if (tokens[currentToken].equals("~")) {
+			currentToken++;
+			result = new UnaryMinusTreeNode(factor());
+		} else {
+			result = new LeafTreeNode(Double.parseDouble(tokens[currentToken]));
+			currentToken++;
+		}
+		return result;
 	}
 
 	/**
@@ -57,9 +67,17 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode term() {
-
-		// TODO fill me in
-		return null;
+		TreeNode result = factor();
+		while (currentToken < tokens.length) {
+			if (tokens[currentToken].equals("*")) {
+				currentToken++;
+				result = new MultiplicationTreeNode(result, factor());
+			} else if (tokens[currentToken].equals("/")) {
+				currentToken++;
+				result = new DivisionTreeNode(result, factor());
+			}
+		}
+		return result;
 
 	}
 
@@ -69,9 +87,16 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode expression() {
-
-		// TODO fill me in
-		return null;
-
+		TreeNode result = term();
+		while (currentToken < tokens.length) {
+			if (tokens[currentToken].equals("+")) {
+				currentToken++;
+				result = new AdditionTreeNode(result, term());
+			} else if (tokens[currentToken].equals("-")) {
+				currentToken++;
+				result = new SubtractionTreeNode(result, term());
+			}
+		}
+		return result;
 	}
 }
