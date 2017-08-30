@@ -34,8 +34,9 @@ public class EvaluateTreeVisitor implements TreeVisitor {
 
 	@Override
 	public void visit(UnaryMinusTreeNode node) {
-		if (node.getChild() instanceof LeafTreeNode)
-			aStack.push(((LeafTreeNode)node.getChild()).getData() * -1.0);
+		node.getChild().accept(this);
+		double tmp1 = aStack.pop() * -1.0;
+		aStack.push(tmp1);
 	}
 
 	@Override
