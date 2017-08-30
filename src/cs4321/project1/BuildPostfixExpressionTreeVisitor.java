@@ -33,7 +33,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	/**
 	 * Method to attach the information of node to nodex in postfix order when visitor is done
 	 * 
-	 * @param the LeafTreeNode to get a postfix pxpression
+	 * @param the LeafTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(LeafTreeNode node) {
@@ -44,7 +44,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	/**
 	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
 	 * 
-	 * @param the UnaryMinusTreeNode to get a postfix pxpression
+	 * @param the UnaryMinusTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(UnaryMinusTreeNode node) {
@@ -56,7 +56,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	/**
 	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
 	 * 
-	 * @param the AdditionTreeNode to get a postfix pxpression
+	 * @param the AdditionTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(AdditionTreeNode node) {
@@ -69,7 +69,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	/**
 	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
 	 * 
-	 * @param the MultiplicationTreeNode to get a postfix pxpression
+	 * @param the MultiplicationTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(MultiplicationTreeNode node) {
@@ -82,7 +82,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	/**
 	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
 	 * 
-	 * @param the SubtractionTreeNode to get a postfix pxpression
+	 * @param the SubtractionTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(SubtractionTreeNode node) {
@@ -95,7 +95,7 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	/**
 	 * Method to attach the information of node and its child to nodex when visitor is done
 	 * 
-	 * @param the DivisionTreeNode to get a postfix pxpression
+	 * @param the DivisionTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(DivisionTreeNode node) {
