@@ -47,11 +47,12 @@ public class Parser {
 	 */
 	private TreeNode factor() {
 		TreeNode result;
+		System.out.println(tokens[currentToken]);
 		if (tokens[currentToken].equals("(")) {
 			currentToken++;
 			result = expression();
 			currentToken++;
-		} else if (tokens[currentToken].equals("~")) {
+		} else if (tokens[currentToken].equals("-")) {
 			currentToken++;
 			result = new UnaryMinusTreeNode(factor());
 		} else {
@@ -67,8 +68,9 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode term() {
+		System.out.println(tokens[currentToken]);
 		TreeNode result = factor();
-		while (currentToken < tokens.length) {
+		while (currentToken < tokens.length && (tokens[currentToken].equals("*") || tokens[currentToken].equals("/"))) {
 			if (tokens[currentToken].equals("*")) {
 				currentToken++;
 				result = new MultiplicationTreeNode(result, factor());
@@ -87,15 +89,16 @@ public class Parser {
 	 * @return the (root node of) the resulting subtree
 	 */
 	private TreeNode expression() {
+		System.out.println(tokens[currentToken]);
 		TreeNode result = term();
-		while (currentToken < tokens.length) {
+		while (currentToken < tokens.length && (tokens[currentToken].equals("+") || tokens[currentToken].equals("-"))) {
 			if (tokens[currentToken].equals("+")) {
-				currentToken++;
-				result = new AdditionTreeNode(result, term());
-			} else if (tokens[currentToken].equals("-")) {
-				currentToken++;
-				result = new SubtractionTreeNode(result, term());
-			}
+					currentToken++;
+					result = new AdditionTreeNode(result, term());
+				} else if (tokens[currentToken].equals("-")) {
+					currentToken++;
+					result = new SubtractionTreeNode(result, term());
+				}
 		}
 		return result;
 	}
