@@ -4,7 +4,7 @@ import cs4321.project1.list.*;
 import cs4321.project1.tree.*;
 
 /**
- * Provide a comment about what your class does and the overall logic
+ * Class for a Tree class that can 
  * 
  * @author Rong Tan (rt389) Akhil Gopu (akg68)
  */

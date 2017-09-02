@@ -3,7 +3,12 @@ package cs4321.project1;
 import cs4321.project1.list.*;
 
 /**
- * Provide a comment about what your class does and the overall logic
+ * Class for a List class that can process a head list to print out the whole
+ * list
+ * 
+ * What this class does is to set up a string. Then use the visitor pattern to
+ * visit nodes in the list one by one by visiting getNext() function. And add
+ * the info we get to attach to the result string
  * 
  * @author Akhil Gopu (akg68) Rong Tan (rt389)
  */
@@ -56,7 +61,7 @@ public class PrintListVisitor implements ListVisitor {
 			node.getNext().accept(this);
 		}
 	}
-	
+
 	/**
 	 * Visit method for addition node by adding - to the original result string
 	 * and proceed to the next node in the list
@@ -106,7 +111,7 @@ public class PrintListVisitor implements ListVisitor {
 		}
 
 	}
-	
+
 	/**
 	 * Visit method for addition node by adding ~ to the original result string
 	 * and proceed to the next node in the list
