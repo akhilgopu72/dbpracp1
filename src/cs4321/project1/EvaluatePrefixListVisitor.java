@@ -46,36 +46,42 @@ public class EvaluatePrefixListVisitor implements ListVisitor {
 			else if (operate instanceof DivisionListNode)
 				operands.push(tmp2 / tmp1);
 		}
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(AdditionListNode node) {
 		operators.push(node);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(SubtractionListNode node) {
 		operators.push(node);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(MultiplicationListNode node) {
 		operators.push(node);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(DivisionListNode node) {
 		operators.push(node);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 		operands.push(operands.pop() * -1.0);
 		
 	}

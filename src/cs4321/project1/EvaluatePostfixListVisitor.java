@@ -32,7 +32,8 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 	@Override
 	public void visit(NumberListNode node) {
 		aStack.push(node.getData());
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
@@ -40,7 +41,8 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp1+tmp2);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
@@ -48,7 +50,8 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp2-tmp1);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
@@ -56,7 +59,8 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp1*tmp2);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
@@ -64,14 +68,16 @@ public class EvaluatePostfixListVisitor implements ListVisitor {
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
 		aStack.push(tmp2/tmp1);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 	@Override
 	public void visit(UnaryMinusListNode node) {
 		double tmp1 = aStack.pop();
 		aStack.push(tmp1 * -1.0);
-		node.getNext().accept(this);
+		if (node.getNext() != null)
+			node.getNext().accept(this);
 	}
 
 }
