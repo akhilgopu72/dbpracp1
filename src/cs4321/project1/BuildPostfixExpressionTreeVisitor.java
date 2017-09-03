@@ -4,7 +4,11 @@ import cs4321.project1.list.*;
 import cs4321.project1.tree.*;
 
 /**
- * Provide a comment about what your class does and the overall logic
+ * Class for the Tree class that can build a Postfix Expression out of a tree
+ * 
+ * The logic is based on recursion and visitor pattern. We start the function by
+ * visiting the root node. Then for every kind of node, we first visit its
+ * children nodes if it has them, and then add its data to the result list.
  * 
  * @author Akhil Gopu (akg68) and Rong Tan (rt389)
  */
@@ -20,31 +24,36 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 		node0 = new NumberListNode(0);
 		nodex = node0;
 	}
-	
+
 	/**
 	 * Method to return the first listNode we generated
 	 * 
-	 * @return the starting node of the whole list, which is the next node of node0
+	 * @return the starting node of the whole list, which is the next node of
+	 *         node0
 	 */
 	public ListNode getResult() {
 		return node0.getNext();
 	}
-	
+
 	/**
-	 * Method to attach the information of node to nodex in postfix order when visitor is done
+	 * Method to attach the information of node to nodex in postfix order when
+	 * visitor is done
 	 * 
-	 * @param the LeafTreeNode to get a postfix expression
+	 * @param the
+	 *            LeafTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(LeafTreeNode node) {
 		nodex.setNext(new NumberListNode(node.getData()));
 		nodex = nodex.getNext();
 	}
-	
+
 	/**
-	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
+	 * Method to attach the information of node and its child to nodex in
+	 * postfix order when visitor is done
 	 * 
-	 * @param the UnaryMinusTreeNode to get a postfix expression
+	 * @param the
+	 *            UnaryMinusTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(UnaryMinusTreeNode node) {
@@ -52,11 +61,13 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 		nodex.setNext(new UnaryMinusListNode());
 		nodex = nodex.getNext();
 	}
-	
+
 	/**
-	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
+	 * Method to attach the information of node and its child to nodex in
+	 * postfix order when visitor is done
 	 * 
-	 * @param the AdditionTreeNode to get a postfix expression
+	 * @param the
+	 *            AdditionTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(AdditionTreeNode node) {
@@ -67,9 +78,11 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	}
 
 	/**
-	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
+	 * Method to attach the information of node and its child to nodex in
+	 * postfix order when visitor is done
 	 * 
-	 * @param the MultiplicationTreeNode to get a postfix expression
+	 * @param the
+	 *            MultiplicationTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(MultiplicationTreeNode node) {
@@ -80,9 +93,11 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	}
 
 	/**
-	 * Method to attach the information of node and its child to nodex in postfix order when visitor is done
+	 * Method to attach the information of node and its child to nodex in
+	 * postfix order when visitor is done
 	 * 
-	 * @param the SubtractionTreeNode to get a postfix expression
+	 * @param the
+	 *            SubtractionTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(SubtractionTreeNode node) {
@@ -93,9 +108,11 @@ public class BuildPostfixExpressionTreeVisitor implements TreeVisitor {
 	}
 
 	/**
-	 * Method to attach the information of node and its child to nodex when visitor is done
+	 * Method to attach the information of node and its child to nodex when
+	 * visitor is done
 	 * 
-	 * @param the DivisionTreeNode to get a postfix expression
+	 * @param the
+	 *            DivisionTreeNode to get a postfix expression
 	 */
 	@Override
 	public void visit(DivisionTreeNode node) {
