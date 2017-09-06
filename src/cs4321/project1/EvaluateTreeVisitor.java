@@ -20,7 +20,7 @@ public class EvaluateTreeVisitor implements TreeVisitor {
 	private Stack<Double> aStack;
 	
 	public EvaluateTreeVisitor() {
-		aStack = new Stack();
+		aStack = new Stack<Double>();
 	}
 
 	public double getResult() {
@@ -34,9 +34,15 @@ public class EvaluateTreeVisitor implements TreeVisitor {
 
 	@Override
 	public void visit(UnaryMinusTreeNode node) {
-		node.getChild().accept(this);
-		double tmp1 = aStack.pop() * -1.0;
-		aStack.push(tmp1);
+		if (node.getChild() instanceof LeafTreeNode)
+			aStack.push(((LeafTreeNode)(node.getChild())).getData() * -1.0);
+		else 
+		{
+			node.getChild().accept(this);
+			double tmp1 = aStack.pop() * -1.0;
+			aStack.push(tmp1);
+		}
+		
 	}
 
 	@Override
@@ -63,7 +69,7 @@ public class EvaluateTreeVisitor implements TreeVisitor {
 		node.getRightChild().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
-		aStack.push(tmp1 - tmp2);
+		aStack.push(tmp2 - tmp1);
 	}
 
 	@Override
@@ -72,6 +78,6 @@ public class EvaluateTreeVisitor implements TreeVisitor {
 		node.getRightChild().accept(this);
 		double tmp1 = aStack.pop();
 		double tmp2 = aStack.pop();
-		aStack.push(tmp1 / tmp2);
+		aStack.push(tmp2 / tmp1);
 	}
 }
