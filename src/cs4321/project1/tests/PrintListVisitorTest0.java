@@ -32,4 +32,45 @@ public class PrintListVisitorTest0 {
 		assertEquals("+ * ~ 1.0 2.0 / 3.0 4.0", pv1.getResult());
 	}
 
+	//Prefix order of 1.0+2.0-3.0+4.0
+		@Test
+		public void test2() {
+			ListNode n1 = new NumberListNode(1.0);
+			ListNode n2 = new AdditionListNode();
+			ListNode n3 = new NumberListNode(2.0);
+			ListNode n4 = new SubtractionListNode();
+			ListNode n5 = new NumberListNode(3.0);
+			ListNode n6 = new AdditionListNode();
+			ListNode n7 = new NumberListNode(4.0);
+			n1.setNext(n2);
+			n2.setNext(n3);
+			n3.setNext(n4);
+			n4.setNext(n5);
+			n5.setNext(n6);
+			n6.setNext(n7);
+			PrintListVisitor pv1 = new PrintListVisitor();
+			n1.accept(pv1);
+			assertEquals("1.0 + 2.0 - 3.0 + 4.0", pv1.getResult());
+		}
+		
+		//Prefix order of 1.0*2.0/3.0*4.0
+		@Test
+		public void test3() {
+			ListNode n1 = new NumberListNode(1.0);
+			ListNode n2 = new MultiplicationListNode();
+			ListNode n3 = new NumberListNode(2.0);
+			ListNode n4 = new DivisionListNode();
+			ListNode n5 = new NumberListNode(3.0);
+			ListNode n6 = new MultiplicationListNode();
+			ListNode n7 = new NumberListNode(4.0);
+			n1.setNext(n2);
+			n2.setNext(n3);
+			n3.setNext(n4);
+			n4.setNext(n5);
+			n5.setNext(n6);
+			n6.setNext(n7);
+			PrintListVisitor pv1 = new PrintListVisitor();
+			n1.accept(pv1);
+			assertEquals("1.0 * 2.0 / 3.0 * 4.0", pv1.getResult());
+		}
 }

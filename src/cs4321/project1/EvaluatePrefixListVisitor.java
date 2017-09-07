@@ -63,8 +63,8 @@ public class EvaluatePrefixListVisitor implements ListVisitor {
 			operands.push(tmp1 + tmp2);
 		else if (operate instanceof SubtractionListNode)
 			operands.push(tmp2 - tmp1); //pop off stack in reverse order
-		else if (operate instanceof MultiplicationListNode)
-			operands.push(tmp1 * tmp2);
+		else if (operate instanceof MultiplicationListNode){
+			operands.push(tmp1 * tmp2);}
 		else if (operate instanceof DivisionListNode)
 			operands.push(tmp2 / tmp1);
 		}
